@@ -1,7 +1,7 @@
 const Score = require('../../../models/Score');
 
 const getAll = (req, res) => {
-    Score.find({ "user": "Jan" })
+    Score.find()
         .then(docs => {
             res.json({ 
                 "status": "succes",
