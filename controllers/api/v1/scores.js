@@ -1,13 +1,4 @@
-//require mongoose
-const mongoose = require('mongoose');
-//require model
-const Schema = mongoose.Schema;
-const ScoreSchema = new Schema({
-    score: Number,
-    team: String
-});
-const Score = mongoose.model('Score', ScoreSchema);
-
+const Score = require('../../../models/Score');
 
 const getAll = (req, res) => {
     Score.find({ "user": "Jan" })
@@ -26,15 +17,15 @@ const getAll = (req, res) => {
 
 const create = (req, res) => {
     let score = new Score();
-    score.score = "2";
-    score.team = "Team 1";
+    score.score = req.body.score;
+    score.team = req.body.team;
     score.save()
         .then(doc => {
             console.log("geen error");
             res.json({ 
                 "status": "succes",
                 "data": {
-                    "scores": doc
+                    "score": doc
                 } 
             });
         })
@@ -45,7 +36,6 @@ const create = (req, res) => {
                 "message": "Could not save this score"
             });
         });
-    res.json({"status": 'Success'})
 }
 
 //export controller
