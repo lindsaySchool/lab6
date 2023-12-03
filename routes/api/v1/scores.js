@@ -2,14 +2,12 @@
 const express = require('express');
 //require router
 const router = express.Router();
+//require controller
+const scoresController = require('../../../controllers/api/v1/scores');
 
-router.get('/', (req, res) => {
-    res.json({"status": 'Success', "data": {"scores": [{"id": 1, "score": 100}, {"id": 2, "score": 200}]}})
-});
+router.get('/', scoresController.getAll);
 
-router.post ('/', (req, res) => {
-    res.json({"status": 'Success'})
-});
+router.post ('/', scoresController.create);
 
 //export router
 module.exports = router;
