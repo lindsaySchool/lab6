@@ -10,11 +10,12 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiScoresRouter = require('./routes/api/v1/scores');
 const apiTeamsRouter = require('./routes/api/v1/teams');
-
+//require config
+const config = require('config');
 //require mongoose
 const mongoose = require('mongoose');
 //connect to mongodb
-mongoose.connect('mongodb://localhost:27017/scores');
+mongoose.connect(process.env.dbconn || config.get('Database.conn'));
 
 const app = express();
 
