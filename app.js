@@ -9,6 +9,7 @@ const cors = require('cors');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiScoresRouter = require('./routes/api/v1/scores');
+const apiTeamsRouter = require('./routes/api/v1/teams');
 
 //require mongoose
 const mongoose = require('mongoose');
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/v1/scores', apiScoresRouter);
+app.user('/api/v1/teams', apiTeamsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
