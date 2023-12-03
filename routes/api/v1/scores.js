@@ -9,5 +9,7 @@ router.get('/', scoresController.getAll);
 
 router.post ('/', scoresController.create);
 
+router.put('/:id', scoresController.update);
+
 //export router
 module.exports = router;

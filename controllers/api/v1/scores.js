@@ -38,6 +38,28 @@ const create = (req, res) => {
         });
 }
 
+//PUT /api/v1/scores/:id
+const update = (req, res) => {
+    let id = req.params.id;
+    Score.findOneAndUpdate({ _id: id }, { score: req.body.score, team: req.body.team })
+        .then(doc => {
+            res.json({ 
+                "status": "succes",
+                "data": {
+                    "score": doc
+                } 
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.json({ 
+                "status": "error",
+                "message": "Could not update this score"
+            });
+        });
+};
+
 //export controller
 module.exports.getAll = getAll;
 module.exports.create = create;
+module.exports.update = update;
