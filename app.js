@@ -8,6 +8,11 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiScoresRouter = require('./routes/api/v1/scores');
 
+//require mongoose
+const mongoose = require('mongoose');
+//connect to mongodb
+mongoose.connect('mongodb://localhost:27017/scores');
+
 const app = express();
 
 // view engine setup
