@@ -6,7 +6,7 @@ const getAll = (req, res) => {
             res.json({ 
                 "status": "succes",
                 "data": {
-                    "scores": docs.map(doc => ({ score: doc.score, team: doc.team }))
+                    "scores": docs.map(doc => ({ _id: doc._id ,score: doc.score, team: doc.team }))
                 } 
             });
         })
